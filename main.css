@@ -45,6 +45,20 @@ footer a {
     gap: 20px;
 }
 
+.button-bottom-left {
+    border-radius: 0 0 0 100%;
+    margin: 0 0 20px 20px;
+    background-color: yellow;
+    border: thick solid rgb(130 124 13);
+}
+
+.button-bottom-right {
+    border-radius: 0 0 100% 0;
+    margin: 0 20px 20px 0;
+    background-color: blue;
+    border: thick solid rgb(27, 14, 100);
+}
+
 .center {
     top: 50%;
     left: 50%;
@@ -62,6 +76,19 @@ footer a {
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
+}
+
+.game {
+    background: rgb(0, 0, 0);
+    border-radius: 50%;
+    box-shadow: 0 0 20px 5px rgb(69, 69, 69);
+    width: 80vw;
+    height: 80vw;
+    position: absolute;
+    min-width: 350px;
+    min-height: 350px;
+    max-width: min(80vmin, 1000px);
+    max-height: min(80vmin, 1000px);
 }
 
 .game-name {
