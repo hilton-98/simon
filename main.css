@@ -42,6 +42,16 @@ footer a {
     border-bottom: solid rgb(182, 182, 182) thin;
 }
 
+.player-name {
+    color: rgb(118, 190, 210);
+}
+
+.players {
+    flex: 1;
+    width: 100%;
+    padding: 0.5em;
+}
+
 @media (max-height: 600px) {
     header {
       display: none;
