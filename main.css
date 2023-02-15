@@ -1,0 +1,22 @@
+body {
+    display: flex;
+}
+
+header {
+    flex: 0 80px;
+}
+
+main {
+    flex: 1 calc(100vh - 110px);
+    display: flex;
+}
+
+footer {
+    flex: 0 30px;
+}
+
+menu {
+    flex: 1;
+    display: flex;
+    flex-direction: row !important;
+}
