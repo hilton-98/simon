@@ -25,7 +25,7 @@ menu {
     display: flex;
     /* overwrite Bootsrap so the menu does not wrap */
     flex-direction: row !important;
-
+    
     list-style: none;
 }
 
@@ -35,6 +35,11 @@ menu .nav-item {
 
 footer a {
     float: right;
+}
+
+.navbar-brand {
+    padding-left: 0.5em;
+    border-bottom: solid rgb(182, 182, 182) thin;
 }
 
 @media (max-height: 600px) {
