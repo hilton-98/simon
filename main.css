@@ -1,5 +1,7 @@
 body {
     display: flex;
+    flex-direction: column;
+    min-width: 375px;
 }
 
 header {
@@ -9,6 +11,9 @@ header {
 main {
     flex: 1 calc(100vh - 110px);
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }
 
 footer {
@@ -18,7 +23,12 @@ footer {
 menu {
     flex: 1;
     display: flex;
+    /* overwrite Bootsrap so the menu does not wrap */
     flex-direction: row !important;
 
     list-style: none;
+}
+
+menu .nav-item {
+    padding: 0 0.3em;
 }
