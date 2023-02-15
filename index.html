@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
+        <!-- Tell browsers not to scale the viewport automatically -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Simon</title>
         <link rel="icon" href="favicon.ico" />
@@ -35,11 +36,9 @@
                     </li>
                 </menu>
             </nav>
-
-            <hr />
         </header>
 
-        <main class="bg-secondary">
+        <main class="bg-secondary container-fluid text-center">
             <h1>Welcome</h1>
             <p>Login to play</p>
             <form method="get" action="play.html">
@@ -49,11 +48,11 @@
             </form>
         </main>
 
-        <footer>
-            <hr />
-            <span class="text-reset">Kevin Hilton</span>
-            <br />
-            <a href="https://github.com/hilton-98/simon">GitHub</a>
+        <footer class="bg-dark text-dark text-muted">
+            <div class="container-fluid">
+                <span class="text-reset">Kevin Hilton</span>
+                <a class="text-reset" href="https://github.com/hilton-98/simon">GitHub</a>
+            </div>
         </footer>
     </body>
 </html>
