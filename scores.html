@@ -45,25 +45,7 @@
                     <th>Score</th>
                     <th>Date</th>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Kevin Hilton</td>
-                        <td>100</td>
-                        <td>Feb 10, 2021</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Tanner Pearson</td>
-                        <td>85</td>
-                        <td>Feb 10, 2021</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Jesse Boggess</td>
-                        <td>110</td>
-                        <td>Feb 10, 2021</td>
-                    </tr>
+                <tbody id="scores">
                 </tbody>
             </table>
         </main>
@@ -74,5 +56,8 @@
                 <a class="text-reset" href="https://github.com/hilton-98/simon">GitHub</a>
             </div>
         </footer>
+
+        <!-- Script is located at the bottom because it references HTML elements during initialization -->
+        <script src="scores.js"></script>
     </body>
 </html>
