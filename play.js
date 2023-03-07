@@ -6,83 +6,99 @@ const btnDescriptions = [
   ];
 
 
-class Button {
+  class Button {
 
-    constructor(descr, element) {
-        this.element = element;
-        this.hue = descr.hue;
-        this.sound = loadSound(descr.file);
-        this.paint(25);
+    constructor(description, el) {
+
+      this.el = el;
+      this.hue = description.hue;
+      this.sound = loadSound(description.file);
+      this.paint(25);
     }
-
+  
     paint(level) {
-        const background = `hsl(${this.hue}, 100%, ${level}%)`;
-        this.element.style.backgroundColor = background;
-    }
 
+      const background = `hsl(${this.hue}, 100%, ${level}%)`;
+      this.el.style.backgroundColor = background;
+    }
+  
     async press(volume) {
-        this.paint(50);
-        await this.play(volume);
-        this.paint(25);
-    }
 
-    async play(volume = 1.0) {
-        this.sound.volume = volume;
-        await new Promise((resolve) => {
-            this.sound.onended = resolve;
-            this.sound.play();
-        });
+      this.paint(50);
+      await this.play(volume);
+      this.paint(25);
     }
-}
+  
+    // Work around Safari's rule to only play sounds if given permission.
+    async play(volume = 1.0) {
+
+      this.sound.volume = volume;
+      await new Promise((resolve) => {
+        this.sound.onended = resolve;
+        this.sound.play();
+      });
+    }
+  }
 
 
 class Game {
 
     constructor() {
+
         this.buttons = new Map();
         this.allowPlayer = false;
         this.sequence = [];
         this.playerPlaybackPos = 0;
         this.mistakeSound = loadSound('error.mp3');
 
-        document.querySelectorAll('.game-button').forEach((element, i) => {
+        document.querySelectorAll('.game-button').forEach((el, i) => {
             if (i < btnDescriptions.length) {
-                this.buttons.set(element.id, new Button(btnDescriptions[i], element));
+                this.buttons.set(el.id, new Button(btnDescriptions[i], el));
             }
         });
 
-        const playerName = document.querySelector('.player-name');
-        playerName.textContent = this.getPlayerName();
+        const playerNameEl = document.querySelector('.player-name');
+        playerNameEl.textContent = this.getPlayerName();
     }
 
     async pressButton(button) {
+
         if (this.allowPlayer) {
+
           this.allowPlayer = false;
           await this.buttons.get(button.id).press(1.0);
     
           if (this.sequence[this.playerPlaybackPos].el.id === button.id) {
+            
             this.playerPlaybackPos++;
+
             if (this.playerPlaybackPos === this.sequence.length) {
+
               this.playerPlaybackPos = 0;
               this.addButton();
               this.updateScore(this.sequence.length - 1);
               await this.playSequence();
+
             }
+
             this.allowPlayer = true;
+
           } else {
+            
             // this.saveScore(this.sequence.length - 1);
             this.mistakeSound.play();
             await this.buttonDance(2);
           }
         }
-      }
+    }
 
     async reset() {
+
         this.allowPlayer = false;
         this.playerPlaybackPos = 0;
         this.sequence = [];
-        this.updateScore('--');
 
+        this.updateScore('--');
         await this.buttonDance(1);
         this.addButton();
         await this.playSequence();
